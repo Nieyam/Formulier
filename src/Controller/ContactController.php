@@ -31,7 +31,10 @@ class ContactController extends AbstractController
                     $contactFormData['bericht'],
                     'text/plain'
                 );
+
             $mailer->send($message);
+
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('contact/index.html.twig', [

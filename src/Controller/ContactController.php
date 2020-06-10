@@ -21,11 +21,11 @@ class ContactController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $contactFormData = $form->getData();
 
             $message = (new \Swift_Message($contactFormData['onderwerp']))
-                ->setFrom('nadia782022@gmail.com')
+                ->setFrom($this->getParameter('default_email'))
                 ->setTo($contactFormData['email'])
                 ->setBody(
                     $contactFormData['bericht'],
